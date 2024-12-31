@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>С Новым Годом!</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+    }
+
+    /* Navigation */
+    nav {
+      background: #2c3e50;
+      padding: 1rem;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      margin: 0 1rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #3498db;
+    }
+
+    /* Header */
+    .header {
+      height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+      url('/api/placeholder/1920/1080');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      animation: fadeIn 2s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Sections */
+    section {
+      padding: 4rem 2rem;
+      display: flex;
+      align-items: center;
+      min-height: 500px;
+    }
+
+    section:nth-child(even) {
+      flex-direction: row-reverse;
+      background: #f8f9fa;
+    }
+
+    .image-container {
+      flex: 1;
+      padding: 1rem;
+      transition: transform 0.3s;
+    }
+
+    .image-container:hover {
+      transform: scale(1.05);
+    }
+
+    .image-container img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .content {
+      flex: 1;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #2c3e50;
+    }
+
+    p {
+      line-height: 1.6;
+      color: #34495e;
+    }
+
+    @media (max-width: 768px) {
+      section {
+        flex-direction: column !important;
+      }
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <ul>
+    <li><a href="#section1">Традиции</a></li>
+    <li><a href="#section2">Подарки</a></li>
+    <li><a href="#section3">Ёлка</a></li>
+    <li><a href="#section4">Угощения</a></li>
+    <li><a href="#section5">Празднование</a></li>
+  </ul>
+</nav>
+
+<header class="header">
+  <h1>С Новым 2025 Годом!</h1>
+</header>
+
+<section id="section1">
+  <div class="image-container">
+    <img src="/api/placeholder/500/300" alt="Новогодние традиции">
+  </div>
+  <div class="content">
+    <h2>Новогодние традиции</h2>
+    <p>Традиции празднования Нового года в России уходят корнями в глубокую древность. Каждая семья собирается за праздничным столом, обменивается подарками и загадывает желания под бой курантов.</p>
+  </div>
+</section>
+
+<section id="section2">
+  <div class="image-container">
+    <img src="/api/placeholder/500/300" alt="Новогодние подарки">
+  </div>
+  <div class="content">
+    <h2>Новогодние подарки</h2>
+    <p>Выбор подарков - особое искусство. В каждой коробке скрывается частичка души дарителя, его забота и внимание к близким. Новогодние подарки создают атмосферу волшебства и радости.</p>
+  </div>
+</section>
+
+<section id="section3">
+  <div class="image-container">
+    <img src="/api/placeholder/500/300" alt="Новогодняя ёлка">
+  </div>
+  <div class="content">
+    <h2>Новогодняя ёлка</h2>
+    <p>Украшение ёлки - один из самых приятных моментов в подготовке к празднику. Каждая игрушка хранит свою историю, а гирлянды создают уютное сияние в доме.</p>
+  </div>
+</section>
+
+<section id="section4">
+  <div class="image-container">
+    <img src="/api/placeholder/500/300" alt="Праздничные угощения">
+  </div>
+  <div class="content">
+    <h2>Праздничные угощения</h2>
+    <p>Новогодний стол - особая традиция. Салат оливье, мандарины, шампанское и другие любимые блюда создают неповторимую атмосферу праздника.</p>
+  </div>
+</section>
+
+<section id="section5">
+  <div class="image-container">
+    <img src="/api/placeholder/500/300" alt="Празднование">
+  </div>
+  <div class="content">
+    <h2>Празднование</h2>
+    <p>В новогоднюю ночь вся страна собирается вместе. Фейерверки освещают небо, а праздничное настроение наполняет каждый дом радостью и весельем.</p>
+  </div>
+</section>
+</body>
+</html>
