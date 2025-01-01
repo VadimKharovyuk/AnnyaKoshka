@@ -701,6 +701,89 @@
       }
     }
 
+
+    .instagram-section {
+      padding: 4rem 2rem;
+      background: var(--section-dark);
+    }
+
+    .instagram-title {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--hover-color);
+      font-size: 2.5rem;
+    }
+
+    .instagram-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); /* Изменено на 2 колонки по умолчанию */
+      gap: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .instagram-post {
+      width: 100%;
+      height: 600px; /* Фиксированная высота */
+      display: flex;
+      justify-content: center;
+      align-items: flex-start; /* Выравнивание по верху */
+      overflow: hidden; /* Скрываем выходящий за пределы контент */
+    }
+
+    .instagram-media {
+      max-width: 100% !important;
+      width: 100% !important;
+      min-width: 280px !important;
+      margin: 0 !important;
+      height: 600px !important; /* Фиксированная высота */
+      overflow-y: hidden !important; /* Скрываем вертикальный скролл */
+    }
+
+    /* Медиа-запросы для адаптивности */
+    @media (max-width: 1024px) {
+      .instagram-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .instagram-post,
+      .instagram-media {
+        height: 500px !important; /* Уменьшаем высоту для планшетов */
+      }
+    }
+
+    @media (max-width: 768px) {
+      .instagram-container {
+        grid-template-columns: 1fr; /* Одна колонка для мобильных */
+        gap: 1rem;
+      }
+
+      .instagram-post,
+      .instagram-media {
+        height: 450px !important; /* Ещё меньше для мобильных */
+      }
+
+      .instagram-title {
+        font-size: 2rem;
+      }
+
+      .instagram-section {
+        padding: 2rem 1rem; /* Уменьшаем отступы */
+      }
+    }
+
+    @media (max-width: 480px) {
+      .instagram-post,
+      .instagram-media {
+        height: 400px !important; /* Минимальная высота для маленьких экранов */
+      }
+
+      .instagram-title {
+        font-size: 1.5rem;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -823,6 +906,37 @@
     </div>
   </div>
 </section>
+
+<!-- Добавьте перед footer -->
+<section class="instagram-section">
+  <h2 class="instagram-title">Follow Me</h2>
+  <div class="instagram-container">
+    <div class="instagram-post">
+      <blockquote class="instagram-media" data-instgrm-captioned
+                  data-instgrm-permalink="https://www.instagram.com/p/CWNnjRNtvjX/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==">
+      </blockquote>
+    </div>
+    <div class="instagram-post">
+      <blockquote class="instagram-media" data-instgrm-captioned
+                  data-instgrm-permalink="https://www.instagram.com/p/BsVgK27F6Mr/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==">
+      </blockquote>
+    </div>
+    <div class="instagram-post">
+      <blockquote class="instagram-media" data-instgrm-captioned
+                  data-instgrm-permalink="https://www.instagram.com/p/CxlqkGHN-8I/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==">
+      </blockquote>
+    </div>
+
+    <div class="instagram-post">
+      <blockquote class="instagram-media" data-instgrm-captioned
+                  data-instgrm-permalink="https://www.instagram.com/p/BwUh-eLn__U/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==">
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- Добавьте перед закрывающим тегом body -->
+<script async src="//www.instagram.com/embed.js"></script>
 
 <footer>
   <div class="decoration decoration-1"></div>
