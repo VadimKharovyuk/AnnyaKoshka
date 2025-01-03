@@ -1094,6 +1094,9 @@
         font-size: 0.8rem;
       }
     }
+
+
+
     .parallax-section {
       height: 100vh;
       position: relative;
@@ -1117,6 +1120,23 @@
       justify-content: center;
       position: relative;
     }
+    .parallax-section {
+      position: relative;
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    .parallax-item {
+      position: relative;
+      height: 100vh;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
     .parallax-content {
       text-align: center;
@@ -1126,37 +1146,26 @@
       border-radius: 20px;
       max-width: 800px;
       width: 90%;
+      z-index: 2;
     }
 
-    .parallax-photo {
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid var(--primary);
-      margin-bottom: 1rem;
-    }
-
-    .parallax-content h3 {
-      color: var(--accent);
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .parallax-content p {
-      color: var(--light);
-      line-height: 1.6;
+    .parallax-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 1;
     }
 
     @media (max-width: 768px) {
-      .parallax-section {
-        height: auto; /* Allow content to determine height */
-      }
-
       .parallax-item {
-        height: auto;
+        background-attachment: scroll;
         min-height: 60vh;
-        padding: 2rem 0;
+        height: auto;
+        padding: 4rem 0;
       }
 
       .parallax-content {
@@ -1164,6 +1173,56 @@
         padding: 1.5rem;
       }
     }
+    /*.parallax-content {*/
+    /*  text-align: center;*/
+    /*  background: rgba(0, 0, 0, 0.6);*/
+    /*  backdrop-filter: blur(10px);*/
+    /*  padding: 2rem;*/
+    /*  border-radius: 20px;*/
+    /*  max-width: 800px;*/
+    /*  width: 90%;*/
+    /*}*/
+
+    /*.parallax-photo {*/
+    /*  width: 300px;*/
+    /*  height: 300px;*/
+    /*  border-radius: 50%;*/
+    /*  object-fit: cover;*/
+    /*  border: 4px solid var(--primary);*/
+    /*  margin-bottom: 1rem;*/
+    /*}*/
+
+    /*.parallax-content h3 {*/
+    /*  color: var(--accent);*/
+    /*  font-size: 2.5rem;*/
+    /*  margin-bottom: 1rem;*/
+    /*}*/
+
+    /*.parallax-content p {*/
+    /*  color: var(--light);*/
+    /*  line-height: 1.6;*/
+    /*}*/
+
+    /*@media (max-width: 768px) {*/
+    /*  .parallax-section {*/
+    /*    height: auto; !* Allow content to determine height *!*/
+    /*  }*/
+
+    /*  .parallax-item {*/
+    /*    height: auto;*/
+    /*    min-height: 60vh;*/
+    /*    padding: 2rem 0;*/
+    /*  }*/
+
+    /*  .parallax-content {*/
+    /*    width: 95%;*/
+    /*    padding: 1.5rem;*/
+    /*  }*/
+    /*}*/
+
+
+
+
 
     .countdown-section {
       min-height: 100vh;
