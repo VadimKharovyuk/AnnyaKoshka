@@ -229,10 +229,8 @@
     .greeting-card:hover:before {
       opacity: 1;
     }
-
-    /* Футер */
     footer {
-      background: var(--gradient1);
+      background: var(--dark);
       padding: 4rem 2rem;
       text-align: center;
       position: relative;
@@ -242,12 +240,16 @@
     .footer-content {
       position: relative;
       z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     .footer-title {
       font-size: 3rem;
       margin-bottom: 2rem;
-      color: var(--light);
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     /* Декоративные элементы */
@@ -255,8 +257,9 @@
       position: absolute;
       background: var(--primary);
       filter: blur(100px);
-      opacity: 0.5;
+      opacity: 0.3;
       border-radius: 50%;
+      z-index: 1;
     }
 
     .decoration-1 {
@@ -264,7 +267,6 @@
       height: 300px;
       top: -150px;
       left: -150px;
-      background: var(--primary);
     }
 
     .decoration-2 {
@@ -272,8 +274,80 @@
       height: 700px;
       bottom: -200px;
       right: -200px;
-      background: var(--secondary);
     }
+
+    /* Фото в секциях */
+    .section-img {
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgb(54, 215, 153);
+      transition: 0.5s;
+    }
+
+    @media (max-width: 768px) {
+      .section-content {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .section-img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 1rem;
+      }
+
+      .footer-title {
+        font-size: 2rem;
+      }
+    }
+    /* Футер */
+    /*footer {*/
+    /*  background: var(--gradient1);*/
+    /*  padding: 4rem 2rem;*/
+    /*  text-align: center;*/
+    /*  position: relative;*/
+    /*  overflow: hidden;*/
+    /*}*/
+
+    /*.footer-content {*/
+    /*  position: relative;*/
+    /*  z-index: 2;*/
+    /*}*/
+
+    /*.footer-title {*/
+    /*  font-size: 3rem;*/
+    /*  margin-bottom: 2rem;*/
+    /*  color: var(--light);*/
+    /*}*/
+
+    /*!* Декоративные элементы *!*/
+    /*.decoration {*/
+    /*  position: absolute;*/
+    /*  background: var(--primary);*/
+    /*  filter: blur(100px);*/
+    /*  opacity: 0.5;*/
+    /*  border-radius: 50%;*/
+    /*}*/
+
+    /*.decoration-1 {*/
+    /*  width: 300px;*/
+    /*  height: 300px;*/
+    /*  top: -150px;*/
+    /*  left: -150px;*/
+    /*  background: var(--primary);*/
+    /*}*/
+
+    /*.decoration-2 {*/
+    /*  width: 700px;*/
+    /*  height: 700px;*/
+    /*  bottom: -200px;*/
+    /*  right: -200px;*/
+    /*  background: var(--secondary);*/
+    /*}*/
 
     /* Анимации при скролле */
     .fade-in {
