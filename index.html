@@ -1257,6 +1257,9 @@
     }
 
     .countdown-button {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
       background: var(--primary);
       color: var(--light);
       border: none;
@@ -1265,8 +1268,23 @@
       font-size: 1.2rem;
       cursor: pointer;
       transition: all 0.3s ease;
+      user-select: none;
+      -webkit-user-select: none;
       -webkit-tap-highlight-color: transparent;
       touch-action: manipulation;
+    }
+
+    @media (hover: hover) {
+      .countdown-button:hover {
+        transform: translateY(-2px);
+        background: var(--accent);
+      }
+    }
+
+    @media (hover: none) {
+      .countdown-button:active {
+        background: var(--accent);
+      }
     }
 
     .countdown-button:hover {
@@ -1321,6 +1339,10 @@
         margin: 0 auto;
       }
     }
+
+
+
+
     html {
       scroll-behavior: smooth;
     }
@@ -1516,7 +1538,7 @@
   <div class="decoration decoration-2"></div>
   <div class="countdown-container">
     <h2 class="countdown-title">Відлік до Дня Народження</h2>
-    <button id="showCountdown" class="countdown-button" onclick="startCountdown()">Показати відлік</button>
+    <button type="button" id="showCountdown" class="countdown-button">Показати відлік</button>
     <div id="countdown" class="countdown-display" style="display: none;">
       <div class="countdown-box">
         <span id="days">0</span>
@@ -1539,64 +1561,50 @@
 </section>
 
 <script>
-  let countdownInterval;
-
-  function startCountdown() {
+  document.addEventListener('DOMContentLoaded', function() {
+    let countdownInterval;
     const button = document.getElementById('showCountdown');
     const countdownDisplay = document.getElementById('countdown');
 
-    if (button && countdownDisplay) {
+    function handleClick(e) {
+      e.preventDefault();
       button.style.display = 'none';
       countdownDisplay.style.display = 'grid';
       updateCountdown();
       countdownInterval = setInterval(updateCountdown, 1000);
     }
-  }
 
-  function calculateTimeLeft() {
-    const kyivDate = new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Kiev' }));
-    const currentYear = kyivDate.getFullYear();
+    // Add both click and touch events
+    button.addEventListener('click', handleClick);
+    button.addEventListener('touchend', handleClick);
 
-    let birthdayDate = new Date(currentYear, 10, 11);
-    birthdayDate = new Date(birthdayDate.toLocaleString('en-US', { timeZone: 'Europe/Kiev' }));
+    function calculateTimeLeft() {
+      const kyivDate = new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Kiev' }));
+      const currentYear = kyivDate.getFullYear();
 
-    if (kyivDate > birthdayDate) {
-      birthdayDate.setFullYear(currentYear + 1);
+      let birthdayDate = new Date(currentYear, 10, 11);
+      birthdayDate = new Date(birthdayDate.toLocaleString('en-US', { timeZone: 'Europe/Kiev' }));
+
+      if (kyivDate > birthdayDate) {
+        birthdayDate.setFullYear(currentYear + 1);
+      }
+
+      const difference = birthdayDate - kyivDate;
+
+      return {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60)
+      };
     }
 
-    const difference = birthdayDate - kyivDate;
-
-    return {
-      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-      minutes: Math.floor((difference / 1000 / 60) % 60),
-      seconds: Math.floor((difference / 1000) % 60)
-    };
-  }
-
-  function updateCountdown() {
-    const timeLeft = calculateTimeLeft();
-    document.getElementById('days').textContent = timeLeft.days;
-    document.getElementById('hours').textContent = timeLeft.hours;
-    document.getElementById('minutes').textContent = timeLeft.minutes;
-    document.getElementById('seconds').textContent = timeLeft.seconds;
-  }
-
-  // Cleanup on page unload
-  window.addEventListener('beforeunload', () => {
-    if (countdownInterval) {
-      clearInterval(countdownInterval);
-    }
-  });
-
-  // Add touch event listeners for mobile
-  document.addEventListener('DOMContentLoaded', () => {
-    const button = document.getElementById('showCountdown');
-    if (button) {
-      button.addEventListener('touchstart', function(e) {
-        e.preventDefault();
-        startCountdown();
-      }, false);
+    function updateCountdown() {
+      const timeLeft = calculateTimeLeft();
+      document.getElementById('days').textContent = timeLeft.days;
+      document.getElementById('hours').textContent = timeLeft.hours;
+      document.getElementById('minutes').textContent = timeLeft.minutes;
+      document.getElementById('seconds').textContent = timeLeft.seconds;
     }
   });
 </script>
