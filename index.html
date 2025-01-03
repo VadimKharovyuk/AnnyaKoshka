@@ -304,50 +304,6 @@
         font-size: 2rem;
       }
     }
-    /* Футер */
-    /*footer {*/
-    /*  background: var(--gradient1);*/
-    /*  padding: 4rem 2rem;*/
-    /*  text-align: center;*/
-    /*  position: relative;*/
-    /*  overflow: hidden;*/
-    /*}*/
-
-    /*.footer-content {*/
-    /*  position: relative;*/
-    /*  z-index: 2;*/
-    /*}*/
-
-    /*.footer-title {*/
-    /*  font-size: 3rem;*/
-    /*  margin-bottom: 2rem;*/
-    /*  color: var(--light);*/
-    /*}*/
-
-    /*!* Декоративные элементы *!*/
-    /*.decoration {*/
-    /*  position: absolute;*/
-    /*  background: var(--primary);*/
-    /*  filter: blur(100px);*/
-    /*  opacity: 0.5;*/
-    /*  border-radius: 50%;*/
-    /*}*/
-
-    /*.decoration-1 {*/
-    /*  width: 300px;*/
-    /*  height: 300px;*/
-    /*  top: -150px;*/
-    /*  left: -150px;*/
-    /*  background: var(--primary);*/
-    /*}*/
-
-    /*.decoration-2 {*/
-    /*  width: 700px;*/
-    /*  height: 700px;*/
-    /*  bottom: -200px;*/
-    /*  right: -200px;*/
-    /*  background: var(--secondary);*/
-    /*}*/
 
     /* Анимации при скролле */
     .fade-in {
@@ -1138,6 +1094,73 @@
         font-size: 0.8rem;
       }
     }
+    .parallax-section {
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .parallax-container {
+      width: 100%;
+      height: 100%;
+    }
+
+    .parallax-item {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .parallax-content {
+      text-align: center;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: 20px;
+      max-width: 800px;
+      width: 90%;
+    }
+
+    .parallax-photo {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .parallax-content h3 {
+      color: var(--accent);
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .parallax-content p {
+      color: var(--light);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .parallax-photo {
+        width: 200px;
+        height: 200px;
+      }
+
+      .parallax-content h3 {
+        font-size: 2rem;
+      }
+
+      .parallax-content {
+        padding: 1.5rem;
+      }
+    }
 
   </style>
 </head>
@@ -1174,6 +1197,17 @@
   <div class="running-text running-text-2">
     <span>💫 Бажаю, щоб всі твої мрії стали реальністю! 💫</span>
     <span>🎈 Нехай рік буде сповнений веселих моментів! 🎈</span>
+  </div>
+</section>
+<section class="parallax-section">
+  <div class="parallax-container">
+    <div class="parallax-item" style="background-image: url('IMG_1651.jpg');">
+      <div class="parallax-content">
+<!--        <img src="centered-photo.jpg" alt="Centered Photo" class="parallax-photo">-->
+        <h3>Keep Smiling - Your Joy Transforms Everything</h3>
+        <p>Every journey has magic: unexpected encounters, unforgettable moments, and the story you create with your own steps.</p>
+      </div>
+    </div>
   </div>
 </section>
 
