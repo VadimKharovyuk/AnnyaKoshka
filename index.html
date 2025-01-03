@@ -1109,8 +1109,9 @@
       width: 100%;
       height: 100%;
       background-size: cover;
+      background-attachment: scroll;
       background-position: center;
-      background-attachment: fixed;
+
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1148,9 +1149,8 @@
     }
 
     @media (max-width: 768px) {
-      .parallax-photo {
-        width: 200px;
-        height: 200px;
+      .parallax-section {
+        height: auto; /* Allow content to determine height */
       }
 
       .parallax-content h3 {
