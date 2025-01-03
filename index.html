@@ -1165,6 +1165,92 @@
       }
     }
 
+
+    .countdown-section {
+      min-height: 100vh;
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .countdown-container {
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 2rem;
+      max-width: 800px;
+      width: 90%;
+      text-align: center;
+    }
+
+    .countdown-title {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .countdown-button {
+      background: var(--primary);
+      color: var(--light);
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .countdown-button:hover {
+      transform: translateY(-2px);
+      background: var(--accent);
+    }
+
+    .countdown-display {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .countdown-box {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1rem;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .countdown-box span:first-child {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: var(--accent);
+    }
+
+    .countdown-box .label {
+      color: var(--light);
+      margin-top: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .countdown-display {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .countdown-title {
+        font-size: 2rem;
+      }
+
+      .countdown-box span:first-child {
+        font-size: 2rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1309,6 +1395,74 @@
     </div>
   </div>
 </section>
+<section id="birthday-countdown" class="countdown-section">
+  <div class="decoration decoration-1"></div>
+  <div class="decoration decoration-2"></div>
+  <div class="countdown-container">
+    <h2 class="countdown-title">Відлік до Дня Народження</h2>
+    <button id="showCountdown" class="countdown-button">Показати відлік</button>
+    <div id="countdown" class="countdown-display" style="display: none;">
+      <div class="countdown-box">
+        <span id="days">0</span>
+        <span class="label">Днів</span>
+      </div>
+      <div class="countdown-box">
+        <span id="hours">0</span>
+        <span class="label">Годин</span>
+      </div>
+      <div class="countdown-box">
+        <span id="minutes">0</span>
+        <span class="label">Хвилин</span>
+      </div>
+      <div class="countdown-box">
+        <span id="seconds">0</span>
+        <span class="label">Секунд</span>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  function calculateTimeLeft() {
+    const options = { timeZone: 'Europe/Kiev' };
+    const kyivTime = new Date().toLocaleString('en-US', options);
+    const currentKyivDate = new Date(kyivTime);
+
+    const currentYear = currentKyivDate.getFullYear();
+    let birthdayDate = new Date(Date.UTC(currentYear, 10, 11));
+
+    if (birthdayDate < currentKyivDate) {
+      birthdayDate = new Date(Date.UTC(currentYear + 1, 10, 11));
+    }
+
+    const difference = birthdayDate - currentKyivDate;
+
+    return {
+      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+      minutes: Math.floor((difference / 1000 / 60) % 60),
+      seconds: Math.floor((difference / 1000) % 60)
+    };
+  }
+
+  let countdownInterval;
+
+  document.getElementById('showCountdown').addEventListener('click', function() {
+    const countdownDisplay = document.getElementById('countdown');
+    countdownDisplay.style.display = 'grid';
+    this.style.display = 'none';
+
+    function updateCountdown() {
+      const timeLeft = calculateTimeLeft();
+      document.getElementById('days').textContent = timeLeft.days;
+      document.getElementById('hours').textContent = timeLeft.hours;
+      document.getElementById('minutes').textContent = timeLeft.minutes;
+      document.getElementById('seconds').textContent = timeLeft.seconds;
+    }
+
+    updateCountdown();
+    countdownInterval = setInterval(updateCountdown, 1000);
+  });
+</script>
 
 <!-- Добавьте перед footer -->
 <section class="instagram-section">
