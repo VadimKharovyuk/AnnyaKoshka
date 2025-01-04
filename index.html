@@ -1639,40 +1639,7 @@
 
 <!-- Добавьте перед закрывающим тегом body -->
 <script async src="//www.instagram.com/embed.js"></script>
-<!--<audio id="backgroundMusic" src="Jingle_bell_rosk_(ringon.site).mp3" loop></audio>-->
 
-<!--<script>-->
-<!--  document.addEventListener('DOMContentLoaded', function() {-->
-<!--    const music = document.getElementById('backgroundMusic');-->
-
-<!--    // Autoplay with user interaction (required by browsers)-->
-<!--    document.addEventListener('click', function initAudio() {-->
-<!--      music.play().catch(function(error) {-->
-<!--        console.log("Audio play failed:", error);-->
-<!--      });-->
-<!--      document.removeEventListener('click', initAudio);-->
-<!--    }, { once: true });-->
-
-<!--    function showNextMessage() {-->
-<!--      const messagesDiv = document.getElementById('messages');-->
-<!--      const message = document.createElement('div');-->
-<!--      message.className = 'message';-->
-<!--      message.textContent = 'Щасливого Нового року! 🎊';-->
-<!--      messagesDiv.appendChild(message);-->
-
-<!--      setTimeout(() => message.classList.add('visible'), 100);-->
-
-<!--      if (music.paused) {-->
-<!--        music.play().catch(function(error) {-->
-<!--          console.log("Audio play failed:", error);-->
-<!--        });-->
-<!--      }-->
-<!--    }-->
-
-<!--    // Make showNextMessage available globally-->
-<!--    window.showNextMessage = showNextMessage;-->
-<!--  });-->
-<!--</script>-->
 <footer>
   <div class="decoration decoration-1"></div>
 
@@ -1684,7 +1651,38 @@
     </p>
     <div id="messages"></div>
     <button onclick="showNextMessage()">Натисни мене!</button>
-    <button onclick="createConfetti()">Запустити конфетті!</button>
+<!--    <button onclick="createConfetti()">Запустити конфетті!</button>-->
+    <audio id="confettiSound" src="Jingle_bell_rosk_(ringon.site).mp3"></audio>
+    <button onclick="playConfetti()">Запустити конфетті!</button>
+
+    <script>
+      function playConfetti() {
+        const sound = document.getElementById('confettiSound');
+        sound.play().catch(e => console.log('Audio play failed:', e));
+        createConfetti();
+      }
+
+      function createConfetti() {
+        for (let i = 0; i < 120; i++) {
+          const confetti = document.createElement('div');
+          confetti.className = 'confetti';
+          confetti.style.left = Math.random() * 100 + 'vw';
+          confetti.style.top = -10 + 'px';
+          confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+          document.body.appendChild(confetti);
+
+          const animation = confetti.animate([
+            {transform: 'translateY(0) rotate(0)', opacity: 1},
+            {transform: `translateY(100vh) rotate(${Math.random() * 360}deg)`, opacity: 0}
+          ], {
+            duration: Math.random() * 2000 + 1000,
+            iterations: 1
+          });
+
+          animation.onfinish = () => confetti.remove();
+        }
+      }
+    </script>
   </div>
 </footer>
 <div class="social-modal">
