@@ -1639,40 +1639,40 @@
 
 <!-- Добавьте перед закрывающим тегом body -->
 <script async src="//www.instagram.com/embed.js"></script>
-<audio id="backgroundMusic" src="Jingle_bell_rosk_(ringon.site).mp3" loop></audio>
+<!--<audio id="backgroundMusic" src="Jingle_bell_rosk_(ringon.site).mp3" loop></audio>-->
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const music = document.getElementById('backgroundMusic');
+<!--<script>-->
+<!--  document.addEventListener('DOMContentLoaded', function() {-->
+<!--    const music = document.getElementById('backgroundMusic');-->
 
-    // Autoplay with user interaction (required by browsers)
-    document.addEventListener('click', function initAudio() {
-      music.play().catch(function(error) {
-        console.log("Audio play failed:", error);
-      });
-      document.removeEventListener('click', initAudio);
-    }, { once: true });
+<!--    // Autoplay with user interaction (required by browsers)-->
+<!--    document.addEventListener('click', function initAudio() {-->
+<!--      music.play().catch(function(error) {-->
+<!--        console.log("Audio play failed:", error);-->
+<!--      });-->
+<!--      document.removeEventListener('click', initAudio);-->
+<!--    }, { once: true });-->
 
-    function showNextMessage() {
-      const messagesDiv = document.getElementById('messages');
-      const message = document.createElement('div');
-      message.className = 'message';
-      message.textContent = 'Щасливого Нового року! 🎊';
-      messagesDiv.appendChild(message);
+<!--    function showNextMessage() {-->
+<!--      const messagesDiv = document.getElementById('messages');-->
+<!--      const message = document.createElement('div');-->
+<!--      message.className = 'message';-->
+<!--      message.textContent = 'Щасливого Нового року! 🎊';-->
+<!--      messagesDiv.appendChild(message);-->
 
-      setTimeout(() => message.classList.add('visible'), 100);
+<!--      setTimeout(() => message.classList.add('visible'), 100);-->
 
-      if (music.paused) {
-        music.play().catch(function(error) {
-          console.log("Audio play failed:", error);
-        });
-      }
-    }
+<!--      if (music.paused) {-->
+<!--        music.play().catch(function(error) {-->
+<!--          console.log("Audio play failed:", error);-->
+<!--        });-->
+<!--      }-->
+<!--    }-->
 
-    // Make showNextMessage available globally
-    window.showNextMessage = showNextMessage;
-  });
-</script>
+<!--    // Make showNextMessage available globally-->
+<!--    window.showNextMessage = showNextMessage;-->
+<!--  });-->
+<!--</script>-->
 <footer>
   <div class="decoration decoration-1"></div>
 
